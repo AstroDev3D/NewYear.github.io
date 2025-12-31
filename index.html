@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy New Year 2026, My Love!</title>
+    <!-- Embedded Fonts for Offline Capability -->
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Pacifico&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --bg-cream: #EDE7C7;
+            --red-bright: #8B0000;
+            --red-dark: #5B0202;
+            --brown-dark: #200E01;
+            --white: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--brown-dark);
+            font-family: 'Quicksand', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+            line-height: 1.6;
+            transition: background-color 0.5s ease;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Abril Fatface', 'Georgia', serif;
+            font-weight: normal;
+        }
+
+        .handwritten {
+            font-family: 'Pacifico', 'Brush Script MT', cursive;
+        }
+
+        /* --- Layout & Utilities --- */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 50px;
+            position: relative;
+            z-index: 10;
+            flex: 1;
+        }
+
+        .flex-row { display: flex; flex-direction: row; gap: 20px; width: 100%; }
+        .flex-col { display: flex; flex-direction: column; gap: 15px; }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .text-center { text-align: center; }
+        .hidden { display: none !important; }
+
+        @media (max-width: 768px) {
+            .flex-row { flex-direction: column; }
+            .mobile-reverse { flex-direction: column-reverse; }
+            h1 { font-size: 3.5rem !important; }
+            .header-title span { font-size: 4.5rem !important; }
+            .intro-text { font-size: 2.5rem !important; }
+        }
+
+        /* --- Animations --- */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        
+        @keyframes blink { 0%, 90%, 100% { transform: scaleY(1); } 95% { transform: scaleY(0.1); } }
+
+        .animate-entry { animation: fadeInUp 0.8s ease-out forwards; opacity: 0; }
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+
+        /* --- Components --- */
+        .btn {
+            padding: 12px 24px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Quicksand', sans-serif;
+            position: relative;
+            overflow: hidden;
+            border: none;
+        }
+
+        .btn:hover { transform: translateY(-3px) scale(1.02); }
+        .btn:active { transform: translateY(2px) scale(0.98); }
+
+        .btn-primary {
+            background-color: var(--red-bright);
+            color: var(--bg-cream);
+            border: 3px solid var(--brown-dark);
+            box-shadow: 4px 4px 0px var(--brown-dark);
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-cream);
+            color: var(--brown-dark);
+            border: 3px solid var(--brown-dark);
+            box-shadow: 4px 4px 0px var(--brown-dark);
+        }
+
+        .btn-file {
+            background-color: #fff;
+            color: var(--brown-dark);
+            border: 2px dashed var(--brown-dark);
+            padding: 10px;
+            font-size: 0.9rem;
+            width: 100%;
+        }
+
+        .card-frame {
+            background-color: #fffbf0;
+            border: 3px solid var(--brown-dark);
+            box-shadow: 8px 8px 0px var(--red-dark);
+            padding: 30px;
+            position: relative;
+            width: 100%;
+            border-radius: 16px;
+            transition: transform 0.3s ease;
+        }
+        .card-frame:hover { transform: translateY(-5px); }
+
+        .tape-input {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: 2px solid var(--brown-dark);
+            background: rgba(255,255,255,0.9);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-family: inherit;
+        }
+        
+        select.tape-input {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23200E01%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right .7em top 50%;
+            background-size: .65em auto;
+        }
+
+        /* --- Header Section --- */
+        .header-title {
+            font-size: 4rem;
+            color: var(--red-dark);
+            line-height: 0.9;
+            position: relative;
+            display: inline-block;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+        }
+        .header-title span { color: var(--red-bright); font-size: 5rem; display: block; }
+        
+        .badge {
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            background: var(--red-bright);
+            color: var(--bg-cream);
+            padding: 5px 15px;
+            border-radius: 50px;
+            font-weight: bold;
+            transform: rotate(12deg);
+            box-shadow: 3px 3px 0px var(--brown-dark);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        /* --- Music Player --- */
+        .playlist-container { width: 100%; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        
+        .song-card {
+            background: white;
+            padding: 15px;
+            border: 2px solid var(--brown-dark);
+            border-radius: 12px;
+            box-shadow: 4px 4px 0px var(--red-dark);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .song-card:hover { transform: translateY(-3px) scale(1.01); box-shadow: 6px 6px 0px var(--red-dark); }
+        .song-card.active { background: #fff0d4; border-color: var(--red-bright); }
+
+        .album-art {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--brown-dark);
+            overflow: hidden;
+            flex-shrink: 0;
+            background: #200E01;
+            position: relative;
+        }
+        .album-art img { width: 100%; height: 100%; object-fit: cover; }
+        .album-art.spinning { animation: spin 4s linear infinite; }
+
+        .progress-bar {
+            height: 4px;
+            background: #ddd;
+            width: 100%;
+            margin-top: 5px;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            background: var(--red-bright);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* --- Polaroids (Themes) --- */
+        .polaroid-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        .polaroid {
+            background: white;
+            padding: 15px 15px 50px 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transform: rotate(-2deg);
+            text-align: center;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border-radius: 4px;
+            position: relative;
+        }
+        .polaroid:hover { transform: scale(1.1) rotate(0deg); z-index: 20; box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+        .polaroid:nth-child(even) { transform: rotate(3deg); }
+        
+        .polaroid-img {
+            background: #eee;
+            height: 200px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+        .polaroid-img img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Polaroid Themes */
+        .theme-classic { background: white; border: 1px solid #ccc; }
+        .theme-gold { background: #FFFDF0; border: 2px solid #FFD700; }
+        .theme-love { background: #FFF0F5; border: 2px solid #FF69B4; }
+        .theme-retro { background: #F5DEB3; border: 2px solid #8B4513; }
+        .theme-cool { background: #E0FFFF; border: 2px solid #00CED1; }
+
+        /* --- Footer --- */
+        .custom-footer {
+            text-align: center;
+            padding: 30px 10px;
+            margin-top: 50px;
+            font-family: 'Pacifico', cursive;
+            font-size: 1.2rem;
+            color: var(--brown-dark);
+            background: rgba(255,255,255,0.3);
+            border-top: 2px solid var(--brown-dark);
+            width: 100%;
+        }
+
+        /* --- Toast --- */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: var(--brown-dark);
+            color: #fff;
+            text-align: center;
+            border-radius: 50px;
+            padding: 16px;
+            position: fixed;
+            z-index: 10000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%) translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            font-weight: bold;
+        }
+        #toast.show { visibility: visible; opacity: 1; transform: translateX(-50%) translateY(0); }
+
+        /* --- Intro Overlay --- */
+        #intro-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.85); /* Black but see-through */
+            backdrop-filter: blur(8px); /* Blur the content behind */
+            z-index: 20000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            opacity: 1;
+            transition: opacity 1.5s ease-out;
+            pointer-events: all;
+        }
+        
+        .intro-text {
+            font-family: 'Abril Fatface', cursive;
+            font-size: 4rem; 
+            color: #FFD700;
+            text-align: center;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+            animation: popIn 1s ease-out;
+            z-index: 20002;
+            padding: 20px;
+        }
+
+        :root {
+            --bg-cream: #EDE7C7;
+            --red-bright: #8B0000;
+            --red-dark: #5B0202;
+            --brown-dark: #200E01;
+        }
+
+        body {
+            background-color: var(--bg-cream);
+            color: var(--brown-dark);
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 1rem;
+        }
+
+        .love-note {
+            background-image: repeating-linear-gradient(var(--bg-cream) 0px, var(--bg-cream) 24px, #cce 25px);
+            line-height: 25px;
+        }
+
+        /* Icons */
+        .icon { width: 24px; height: 24px; stroke: currentColor; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    </style>
+</head>
+<body onclick="createHeart(event)">
+
+    <canvas id="firework-canvas" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none; z-index:20001;"></canvas>
+    <div id="toast">Notification</div>
+
+    <!-- Intro Overlay -->
+     <div id="intro-overlay">
+        <h1 class="intro-text">
+            Happy New Year 2026<br>
+            <span style="font-size: 3rem;">🎊🎇🎆</span>
+        </h1>
+    </div>
+
+    <!-- Decorative Stickers -->
+    <div style="position:fixed; top: 10%; left: 5%; width: 40px; color: var(--red-bright); opacity:0.6; animation: float 6s infinite;"><svg class="icon" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg></div>
+    <div style="position:fixed; bottom: 15%; right: 5%; width: 50px; color: var(--red-dark); opacity:0.6; animation: float 7s infinite;"><svg class="icon" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg></div>
+
+    <div class="container" id="main-container">
+        
+        <!-- HEADER -->
+        <header class="text-center animate-entry" style="margin-top: 20px;">
+            <div style="display: inline-block; position: relative;">
+                <div class="badge">2026 Baby!</div>
+                <h1 class="header-title">
+                    Happy<br>
+                    <span>New Year</span>
+                </h1>
+            </div>
+            <p class="handwritten" style="font-size: 2rem; margin-top: 10px; transform: rotate(-2deg); color: var(--brown-dark);">To my amazing girlfriend (Wife) ❤️</p>
+            
+            <div class="flex-row justify-center" style="margin-top: 30px; flex-wrap: wrap;">
+                <div class="btn btn-secondary" style="cursor: default;">
+                    <svg class="icon" style="color: var(--red-bright);" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    <span>Days loved: <span id="days-count">...</span></span>
+                </div>
+                <button onclick="generateReason(event)" class="btn" style="background: #ffebcd; border: 2px solid var(--brown-dark);">
+                    <svg class="icon" style="color: var(--red-bright);" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    Why I love you?
+                </button>
+            </div>
+            
+            <div id="reason-box" class="hidden" style="margin-top: 20px; animation: popIn 0.5s;">
+                <p id="reason-text" class="handwritten" style="font-size: 1.3rem; color: var(--red-bright); background: white; padding: 10px 20px; border-radius: 50px; display: inline-block; border: 2px dashed var(--brown-dark);"></p>
+            </div>
+        </header>
+
+        <!-- MAIN CARD -->
+        <div class="card-frame animate-entry delay-1">
+            <div class="flex-row items-center mobile-reverse">
+                <div style="flex: 1.5; text-align: left;" class="text-center">
+                    <h2 style="font-size: 2.2rem; color: var(--red-bright); margin-bottom: 10px;">Cheers to 2026!</h2>
+                    <p style="font-weight: 600; font-size: 1.1rem; margin-bottom: 20px;">
+                        Ready for another year of bad jokes, good food, and great music? Let's make this one our best track yet.
+                    </p>
+                    <div style="display:flex; gap:10px; justify-content: center; flex-wrap: wrap;">
+                        <button onclick="triggerSurprise(event)" class="btn btn-primary">
+                            Surprise! 🎁
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Bear Illustration -->
+                <div style="flex: 1; display: flex; justify-content: center; margin-bottom: 10px;">
+                    <div style="width: 150px; height: 150px; background: var(--brown-dark); border-radius: 50%; position: relative; display: flex; align-items: center; justify-content: center;">
+                         <div style="position: absolute; top: -10px; left: 10px; width: 40px; height: 40px; background: var(--brown-dark); border-radius: 50%; z-index: -1;"></div>
+                         <div style="position: absolute; top: -10px; right: 10px; width: 40px; height: 40px; background: var(--brown-dark); border-radius: 50%; z-index: -1;"></div>
+                         <div style="width: 125px; height: 125px; background: var(--red-dark); border-radius: 50%; position: relative; border: 4px solid var(--bg-cream); overflow: hidden;">
+                            <div style="animation: blink 4s infinite; position: absolute; top: 40px; left: 30px; width: 12px; height: 12px; background: var(--bg-cream); border-radius: 50%;"></div>
+                            <div style="animation: blink 4s infinite; position: absolute; top: 40px; right: 30px; width: 12px; height: 12px; background: var(--bg-cream); border-radius: 50%;"></div>
+                            <div style="position: absolute; top: 65px; left: 50%; transform: translateX(-50%); width: 25px; height: 15px; background: var(--brown-dark); border-radius: 0 0 15px 15px;"></div>
+                            <div style="position: absolute; top: 55px; left: 15px; width: 20px; height: 12px; background: rgba(255,150,150,0.4); border-radius: 50%;"></div>
+                            <div style="position: absolute; top: 55px; right: 15px; width: 20px; height: 12px; background: rgba(255,150,150,0.4); border-radius: 50%;"></div>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MEMORIES (POLAROIDS) -->
+        <div style="width: 100%; text-align: center;" class="animate-entry delay-3">
+            <div class="flex-row justify-between items-center" style="margin-bottom: 20px; border-bottom: 4px solid var(--brown-dark); padding-bottom: 15px;">
+                <h2 style="font-size: 3rem; color: var(--brown-dark); transform: rotate(-1deg);">Snapshots</h2>
+                <button onclick="togglePhotoForm(event)" class="btn btn-primary" style="padding: 8px 16px;">
+                    + Add Memory
+                </button>
+            </div>
+
+            <!-- Add Photo Form -->
+             <div id="add-photo-form" class="hidden card-frame" style="margin-bottom: 30px; border-style: dashed; text-align: left;">
+                <h3 style="margin-bottom: 20px; color: var(--red-dark);">Add New Memory</h3>
+                <div class="flex-col">
+                    <label style="font-weight:bold;">1. Choose Photo:</label>
+                    <input type="file" id="photo-file" accept="image/*" class="tape-input btn-file">
+                    
+                    <label style="font-weight:bold;">2. Caption:</label>
+                    <input type="text" id="photo-caption" placeholder="E.g. Coffee date..." class="tape-input">
+
+                    <label style="font-weight:bold;">3. Select Theme:</label>
+                    <select id="photo-theme" class="tape-input">
+                        <option value="theme-classic">Classic (White)</option>
+                        <option value="theme-gold">Golden Hour</option>
+                        <option value="theme-love">Love (Pink)</option>
+                        <option value="theme-retro">Vintage (Brown)</option>
+                        <option value="theme-cool">Ocean (Blue)</option>
+                    </select>
+
+                    <div style="text-align: right; margin-top: 15px; display:flex; justify-content: flex-end; gap: 10px;">
+                        <button onclick="togglePhotoForm(event)" class="btn btn-secondary">Cancel</button>
+                        <button onclick="addPhoto(event)" class="btn btn-primary">Snap It!</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="polaroid-grid" class="polaroid-grid">
+                <!-- Existing Memories -->
+                <div class="polaroid theme-classic">
+                    <div class="polaroid-img">
+                        <img src="1000017208.jpg" alt="Us being silly">
+                    </div>
+                    <p class="handwritten" style="font-size: 1.2rem; color: var(--red-dark); font-weight: bold;">Us being silly</p>
+                </div>
+                <div class="polaroid theme-retro">
+                    <div class="polaroid-img">
+                         <img src="1767201363623~2.jpg" alt="Biryani dates">
+                    </div>
+                    <p class="handwritten" style="font-size: 1.2rem; color: var(--red-dark); font-weight: bold;">Biryani dates</p>
+                </div>
+                <div class="polaroid theme-gold">
+                    <div class="polaroid-img">
+                        <img src="Gemini_Generated_Image_6vaqhg6vaqhg6vaq.jpg" alt="Future Memories">
+                    </div>
+                    <p class="handwritten" style="font-size: 1.2rem; color: var(--red-dark); font-weight: bold;">Future Memories</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- MUSIC SECTION -->
+        <div style="width: 100%;" class="animate-entry delay-2">
+            <div class="flex-row justify-between items-center" style="border-bottom: 4px solid var(--brown-dark); padding-bottom: 20px; margin-bottom: 20px;">
+                <div>
+                    <h2 style="font-size: 2.5rem; color: var(--red-dark); line-height: 1;">Our Mixtape</h2>
+                </div>
+                <div style="display: flex; gap: 10px;">
+                    <button onclick="shuffleSong()" class="btn btn-secondary" style="background: #FFF0F5;" title="Shuffle">
+                        Shuffle 🔀
+                    </button>
+                    <button onclick="stopAudio()" class="btn btn-secondary" title="Stop">
+                         <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect></svg>
+                    </button>
+                    <button onclick="toggleAddForm(event)" class="btn btn-primary" style="padding: 8px 16px;">
+                        + Add Song
+                    </button>
+                </div>
+            </div>
+
+            <!-- ADD SONG FORM -->
+            <div id="add-song-form" class="hidden card-frame" style="margin-bottom: 30px; border-style: dashed;">
+                <h3 style="margin-bottom: 20px; color: var(--red-dark);">Add a Custom Track</h3>
+                
+                <div class="flex-col">
+                    <input type="text" id="song-title" placeholder="Song Title" class="tape-input">
+                    <input type="text" id="song-artist" placeholder="Artist Name" class="tape-input">
+                    
+                    <div class="flex-row">
+                        <div style="flex:1">
+                            <label style="font-weight:bold; font-size:0.9rem;">Audio File (MP3):</label>
+                            <input type="file" id="song-file" accept="audio/*" class="tape-input btn-file">
+                        </div>
+                        <div style="flex:1">
+                            <label style="font-weight:bold; font-size:0.9rem;">Cover Photo:</label>
+                            <input type="file" id="cover-file" accept="image/*" class="tape-input btn-file">
+                        </div>
+                    </div>
+
+                    <div style="text-align: right; margin-top: 15px; display:flex; justify-content: flex-end; gap: 10px;">
+                        <button onclick="toggleAddForm(event)" class="btn btn-secondary">Cancel</button>
+                        <button onclick="addSong(event)" class="btn btn-primary">Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Playlist -->
+            <div id="playlist-container" class="playlist-container">
+                <!-- JS Will Populate This -->
+            </div>
+            <audio id="main-audio" preload="auto"></audio>
+        </div>
+
+    </div>
+
+    <!-- Message Box -->
+    <section class="w-full max-w-lg mx-auto relative group">
+        <div class="absolute -inset-1 bg-gradient-to-r from-[#8B0000] to-[#5B0202] rounded-lg blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+        
+        <div class="relative bg-white p-8 border-2 border-[#200E01] rounded-lg love-note transition-transform duration-300 hover:scale-105 active:scale-95 cursor-pointer" onclick="triggerConfetti(event)">
+            <h3 class="text-2xl font-bold mb-4 text-[#8B0000] flex items-center gap-2">
+                <i data-lucide="pen-tool" class="w-6 h-6"></i> My Resolutions:
+            </h3>
+            <ul class="list-none space-y-2 font-semibold">
+                <li class="flex items-center gap-2">
+                    <i data-lucide="check" class="text-green-600 w-5 h-5"></i> 
+                    Love you more than 2025.
+                </li>
+                <li class="flex items-center gap-2">
+                    <i data-lucide="check" class="text-green-600 w-5 h-5"></i> 
+                    Buy you more flowers.
+                </li>
+                <li class="flex items-center gap-2">
+                    <i data-lucide="check" class="text-green-600 w-5 h-5"></i> 
+                    Win every argument (Jk!).
+                </li>
+                <li class="flex items-center gap-2">
+                    <i data-lucide="check" class="text-green-600 w-5 h-5"></i> 
+                    Make 2026 our best year yet.
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="custom-footer">
+        Made with love ❤️, only for you Anu ᥫ᭡
+    </footer>
+
+    <!-- Hidden Surprise Modal -->
+    <div id="surprise-modal" class="hidden" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(32, 14, 1, 0.95); z-index: 200; display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.5s;">
+        <div class="card-frame" style="max-width: 400px; text-align: center; border-color: var(--red-bright); transform: scale(0.9); transition: transform 0.5s;">
+            <h2 class="handwritten" style="font-size: 3rem; color: var(--red-bright); margin-bottom: 20px;">I Love You!</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 30px; font-weight: bold;">You are the melody to my life.<br>Happy New Year! 🎆</p>
+            <button onclick="closeSurprise(event)" class="btn btn-primary" style="width: 100%; justify-content: center;">Close x</button>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+        /* --- UTILS --- */
+        const $ = (id) => document.getElementById(id);
+        const toast = $('toast');
+        const showToast = (msg) => {
+            toast.innerText = msg;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        };
+
+        /* --- LOGIC: Days Counter --- */
+        // Adjusted to be ~173 days before Jan 1, 2026
+        const startDate = new Date('2025-07-12'); 
+        const now = new Date();
+        const diffDays = Math.ceil(Math.abs(now - startDate) / (1000 * 60 * 60 * 24)); 
+        $('days-count').innerText = diffDays + " days";
+
+        /* --- LOGIC: Reason Generator --- */
+        const reasons = ["Your smile!", "Your kindness.", "The way you laugh.", "Your hugs.", "You're my best friend.", "You support my dreams."];
+        function generateReason(e) {
+            e.stopPropagation();
+            $('reason-text').innerText = reasons[Math.floor(Math.random() * reasons.length)];
+            $('reason-box').classList.remove('hidden');
+        }
+
+        /* --- LOGIC: Photo Memory System --- */
+        function togglePhotoForm(e) { e.stopPropagation(); $('add-photo-form').classList.toggle('hidden'); }
+
+        function addPhoto(e) {
+            e.stopPropagation();
+            const photoInput = $('photo-file');
+            const caption = $('photo-caption').value.trim();
+            const theme = $('photo-theme').value;
+
+            if (photoInput.files.length === 0) { showToast("Please select a photo!"); return; }
+            if (!caption) { showToast("Add a caption!"); return; }
+
+            const photoUrl = URL.createObjectURL(photoInput.files[0]);
+            
+            const grid = $('polaroid-grid');
+            const div = document.createElement('div');
+            div.className = `polaroid ${theme} animate-entry`;
+            div.innerHTML = `
+                <div class="polaroid-img">
+                    <img src="${photoUrl}" alt="Memory">
+                </div>
+                <p class="handwritten" style="font-size: 1.2rem; color: var(--red-dark); font-weight: bold;">${caption}</p>
+            `;
+            
+            grid.appendChild(div);
+            
+            // Reset
+            photoInput.value = '';
+            $('photo-caption').value = '';
+            togglePhotoForm(e);
+            showToast("Memory snapped!");
+        }
+
+        /* --- LOGIC: Audio Player --- */
+        const audio = $('main-audio');
+        let currentId = null;
+        let isPlaying = false;
+        // Reverted to Demo Track because YouTube links cannot be played in <audio> tag
+        let playlist = [{ id: 1, title: "Happy Vibes", artist: "Demo Track", url: "https://cdn.pixabay.com/download/audio/2022/03/15/audio_24e5a9689e.mp3", cover: null }];
+
+        function getVinylSVG() {
+            return `<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:#200E01;"><div style="width:35%; height:35%; background:#8B0000; border-radius:50%; border:2px solid #EDE7C7;"></div></div>`;
+        }
+
+        function renderPlaylist() {
+            const container = $('playlist-container');
+            container.innerHTML = '';
+            playlist.forEach(song => {
+                const isActive = (currentId === song.id);
+                const card = document.createElement('div');
+                card.className = `song-card ${isActive ? 'active' : ''}`;
+                let coverHtml = song.cover ? `<img src="${song.cover}" alt="cover">` : getVinylSVG();
+                const iconPath = (isActive && isPlaying) 
+                    ? `<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>` 
+                    : `<polygon points="5 3 19 12 5 21 5 3"></polygon>`;
+
+                card.innerHTML = `
+                    <div class="album-art ${isActive && isPlaying ? 'spinning' : ''}">${coverHtml}</div>
+                    <div style="flex-grow: 1; min-width: 0;">
+                        <h4 style="font-weight: bold; color: var(--brown-dark); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${song.title}</h4>
+                        <p style="font-size: 0.85rem; color: #666;">${song.artist}</p>
+                        ${isActive ? `<div class="progress-bar"><div class="progress-fill" id="prog-${song.id}"></div></div>` : ''}
+                    </div>
+                    <button onclick="playSong(${song.id}, event)" class="btn" style="padding:10px; border-radius:50%; width:40px; height:40px; min-width:40px; background:var(--red-bright); color:white; border:2px solid var(--brown-dark);">
+                        <svg class="icon" viewBox="0 0 24 24" style="width:16px; height:16px; fill:currentColor; stroke:none;">${iconPath}</svg>
+                    </button>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function playSong(id, e) {
+            e.stopPropagation();
+            const song = playlist.find(s => s.id === id);
+            if (currentId === id) {
+                if (isPlaying) { audio.pause(); isPlaying = false; } else { audio.play(); isPlaying = true; }
+            } else {
+                currentId = id; audio.src = song.url;
+                audio.play().then(() => { isPlaying = true; renderPlaylist(); })
+                    .catch(() => { showToast("Error playing file"); isPlaying = false; renderPlaylist(); });
+                isPlaying = true;
+            }
+            renderPlaylist();
+        }
+
+        function stopAudio() {
+            audio.pause(); audio.currentTime = 0; isPlaying = false; currentId = null; renderPlaylist();
+        }
+
+        function shuffleSong() {
+            if (playlist.length === 0) return;
+            const randomIndex = Math.floor(Math.random() * playlist.length);
+            const song = playlist[randomIndex];
+            // If the same song is picked, play it from start or just continue if playing?
+            // Let's force play from start for effect
+            if(currentId === song.id && isPlaying) {
+               audio.currentTime = 0;
+            } else {
+               playSong(song.id, { stopPropagation: () => {} }); // Mock event
+            }
+            showToast(`Shuffling: ${song.title} 🔀`);
+        }
+
+        audio.ontimeupdate = () => {
+            if(currentId && isPlaying) {
+                const pct = (audio.currentTime / audio.duration) * 100;
+                const bar = $(`prog-${currentId}`);
+                if(bar) bar.style.width = pct + '%';
+            }
+        };
+        audio.onended = () => { isPlaying = false; renderPlaylist(); };
+
+        function toggleAddForm(e) { e.stopPropagation(); $('add-song-form').classList.toggle('hidden'); }
+
+        function addSong(e) {
+            e.stopPropagation();
+            const title = $('song-title').value.trim();
+            const artist = $('song-artist').value.trim();
+            const audioInput = $('song-file');
+            const coverInput = $('cover-file');
+
+            if (!title || !artist) { showToast("Title & Artist required!"); return; }
+            if (audioInput.files.length === 0) { showToast("Select MP3 file!"); return; }
+
+            const audioUrl = URL.createObjectURL(audioInput.files[0]);
+            let coverUrl = null;
+            if (coverInput.files.length > 0) coverUrl = URL.createObjectURL(coverInput.files[0]);
+
+            playlist.push({ id: Date.now(), title, artist, url: audioUrl, cover: coverUrl });
+            $('song-title').value = ''; $('song-artist').value = ''; audioInput.value = ''; coverInput.value = '';
+            toggleAddForm(e); renderPlaylist(); showToast("Song added!");
+        }
+
+        /* --- VISUAL EFFECTS LOGIC --- */
+        const canvas = $('firework-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationId;
+        
+        function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // 1. CONFETTI (for Surprise Button)
+        function createConfetti() {
+             const colors = ['#8B0000', '#5B0202', '#EDE7C7', '#FFF'];
+             for(let i=0; i<80; i++) {
+                particles.push({
+                    type: 'confetti',
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    size: Math.random() * 8 + 4,
+                    speedY: Math.random() * 5 + 2,
+                    speedX: Math.random() * 4 - 2,
+                    angle: Math.random() * 360,
+                    spin: Math.random() * 10 - 5
+                });
+            }
+        }
+
+        // 2. FIREWORKS (for Intro)
+        function createExplosion(x, y) {
+            const colors = ['#FFD700', '#FF4500', '#FF69B4', '#00FFFF', '#7FFF00'];
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            for (let i = 0; i < 50; i++) {
+                particles.push({
+                    type: 'firework',
+                    x: x, y: y,
+                    color: color,
+                    radius: Math.random() * 3 + 1,
+                    velocity: { x: (Math.random() - 0.5) * 10, y: (Math.random() - 0.5) * 10 },
+                    alpha: 1,
+                    decay: Math.random() * 0.015 + 0.005
+                });
+            }
+        }
+
+        // Shared Animation Loop
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); 
+
+            particles.forEach((p, index) => {
+                if(p.type === 'confetti') {
+                    p.y += p.speedY;
+                    p.x += p.speedX;
+                    p.angle += p.spin;
+                    if(p.y > canvas.height) p.y = -10;
+                    
+                    ctx.save();
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate(p.angle * Math.PI / 180);
+                    ctx.fillStyle = p.color;
+                    ctx.fillRect(-p.size/2, -p.size/2, p.size, p.size);
+                    ctx.restore();
+                } 
+                else if (p.type === 'firework') {
+                    if (p.alpha > 0) {
+                        p.velocity.x *= 0.95; p.velocity.y *= 0.95; 
+                        p.velocity.y += 0.05; 
+                        p.x += p.velocity.x; p.y += p.velocity.y;
+                        p.alpha -= p.decay;
+                        
+                        ctx.save();
+                        ctx.globalAlpha = p.alpha;
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2, false);
+                        ctx.fillStyle = p.color;
+                        ctx.fill();
+                        ctx.restore();
+                    } else {
+                        particles.splice(index, 1);
+                    }
+                }
+            });
+
+            // Auto-fireworks during intro
+            if(isIntroActive && Math.random() < 0.1) {
+                createExplosion(Math.random() * canvas.width, Math.random() * canvas.height * 0.6);
+            }
+
+            if(particles.length > 0 || isIntroActive) {
+                animationId = requestAnimationFrame(animateCanvas);
+            }
+        }
+
+        /* --- Surprise Modal Logic --- */
+        function triggerSurprise(e) {
+            e.stopPropagation();
+            const modal = $('surprise-modal');
+            modal.classList.remove('hidden');
+            void modal.offsetWidth;
+            modal.style.opacity = '1';
+            modal.children[0].style.transform = 'scale(1)';
+            
+            // Sprinkle Confetti
+            particles = particles.filter(p => p.type !== 'confetti'); // Clear old confetti
+            createConfetti();
+            if(!animationId || particles.length === 80) animateCanvas();
+        }
+
+        // New function specifically for clicking the resolutions box
+        function triggerConfetti(e) {
+            e.stopPropagation();
+            // Just add confetti without opening the modal
+            createConfetti();
+            if(!animationId || particles.length > 0) animateCanvas();
+        }
+
+        function closeSurprise(e) {
+            e.stopPropagation();
+            const modal = $('surprise-modal');
+            modal.style.opacity = '0';
+            modal.children[0].style.transform = 'scale(0.9)';
+            setTimeout(() => { 
+                modal.classList.add('hidden'); 
+                particles = particles.filter(p => p.type !== 'confetti'); // Stop confetti
+            }, 500);
+        }
+
+        function createHeart(e) {
+            if(e.target.closest('button') || e.target.closest('input') || e.target.closest('select')) return;
+            const h = document.createElement('div');
+            h.innerText = '❤️';
+            h.style.position = 'absolute';
+            h.style.left = (e.clientX-10)+'px';
+            h.style.top = (e.clientY-10)+'px';
+            h.style.fontSize = '24px';
+            h.style.pointerEvents = 'none';
+            h.style.animation = 'float 1s ease-out forwards';
+            h.style.zIndex = '100';
+            document.body.appendChild(h);
+            setTimeout(() => h.remove(), 1000);
+        }
+
+        /* --- INTRO SEQUENCE --- */
+        let isIntroActive = true;
+        
+        window.onload = function() {
+            // Start Fireworks
+            animateCanvas();
+            
+            // Hide after 6 seconds
+            setTimeout(() => {
+                const overlay = $('intro-overlay');
+                overlay.style.opacity = '0';
+                overlay.style.pointerEvents = 'none';
+                isIntroActive = false; // Stops auto-fireworks
+            }, 6000);
+        };
+
+        // Init
+        renderPlaylist();
+    </script>
+</body>
+</html>
